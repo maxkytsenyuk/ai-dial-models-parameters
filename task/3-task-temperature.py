@@ -1,14 +1,13 @@
 from task.app.main import run
+from task.app.utils import get_model_name_from_input, get_temperature_from_input
 
-# TODO:
-#  Try the `temperature` parameter that controls the randomness of the output. It's a parameter for balancing creativity
-#        and determinism. Range: 0.0 to 2.0, Default: 1.0
-#  User massage: Describe the sound that the color purple makes when it's angry
+#  User massage example: Describe the sound that the color purple makes when it's angry
+
+model = get_model_name_from_input()
+temperature = get_temperature_from_input()
 
 run(
-    deployment_name='gpt-4o',
+    deployment_name=model.value,
+    temperature=temperature,
     print_only_content=True,
-    # TODO:
-    #  Use `temperature` parameter with value in range from 0.0 to 1.0!
-    #  (Optional) Use `temperature` parameter with value 2.1 and check what happens
 )

@@ -1,21 +1,15 @@
 from task.app.main import run
+from task.app.utils import get_model_name_from_input, get_choices_from_input, get_seed_from_input
 
-# TODO:
-#  Try the `seed` parameter:
-#       It allows us to reduce entropy by making the model's output more deterministic.
-#       There's no universally "best" seed - any integer works fine. Common approaches:
-#            - For testing: Use simple values like 42, 123, or 1000
-#       Default: None or random unless specified on the LLM side
-#  User massage: Name a random animal
+
+#  User massage example: Name a random animal
+
+model = get_model_name_from_input()
+n = get_choices_from_input()
+seed = get_seed_from_input()
 
 run(
-    deployment_name='gpt-4o',
-    # TODO:
-    #  1. Use `seed` parameter with value 42 (or whatever you want)
-    #  2. Use `n` parameter with value 5
+    deployment_name=model.value,
+    n=n,
+    seed=seed,
 )
-
-# Check the content in choices. The expected result is that in almost all choices the result will be the same.
-# If you restart the app and retry, it should be mostly the same.
-# Also, try it without `seed` parameter.
-# For Anthropic and Gemini this parameter will be ignored

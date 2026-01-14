@@ -1,21 +1,11 @@
 from task.app.main import run
+from task.app.utils import get_model_name_from_input, get_choices_from_input
 
-# TODO:
-#  Try the `n` parameter with different models (`deployment_name`). With the parameter `n`, we can configure how many
-#       chat completion choices to generate for each input message
-#  User massage: Why is the snow white?
 
-# Models to try:
-# - gpt-4o
-# - claude-3-7-sonnet@20250219
-# - gemini-2.5-pro
+model = get_model_name_from_input()
+n = get_choices_from_input()
 
 run(
-    # TODO:
-    #  1. Provide `deployment_name` with model from the list above👆
-    #  2. Use `n` parameter with value in range from 1 to 5!
+    deployment_name=model.value,
+    n=n,
 )
-
-# Pay attention to the number of choices in the response!
-# If you have worked with ChatGPT, you have probably seen responses where ChatGPT offers you a choice between two
-# responses to select which one you prefer. This is done with the `n` parameter.

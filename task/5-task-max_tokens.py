@@ -1,14 +1,13 @@
 from task.app.main import run
+from task.app.utils import get_model_name_from_input, get_max_tokens_from_input
 
-# TODO:
-#  Try `max_tokens` parameter. It sets the maximum length of the AI's response. The AI will stop generating text once it hits this limit.
-#  User massage: What is token when we are working with LLM?
+
+#  User massage example: What is token when we are working with LLM?
+
+model = get_model_name_from_input()
+max_tokens = get_max_tokens_from_input()
 
 run(
-    deployment_name='gpt-4o',
-    # TODO:
-    #  Use `max_tokens` parameter with value 10
+    deployment_name=model.value,
+    max_tokens=max_tokens,
 )
-
-# Previously, we have seen that the `finish_reason` in choice was `stop`, but now it is `length`, and if you check the
-# `content,` it is clearly unfinished.
